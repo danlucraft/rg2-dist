@@ -1,8 +1,11 @@
 require 'fileutils'
 include FileUtils
 
+task :default => :build
+
 task :build do
-  sh "rm -rf dist/*"
+  sh "rm -rf dist"
+  mkdir "dist"
   mkdir "dist/ruby"
   sh "gcc -I. -c -obin/main.o -Wall -I/usr/include -I/usr/local/lib/ruby/1.8/i686-linux -O bin/main.c"
   rm_f "dist/shoes"
